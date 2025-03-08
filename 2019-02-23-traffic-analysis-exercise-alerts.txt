@@ -1,0 +1,161 @@
+------------------------------------------------------------------------
+Count:3 Event#3.86707 2019-02-23 19:27 UTC
+ET CURRENT_EVENTS Likely Evil EXE download from dotted Quad by MSXMLHTTP M1
+209.141.55.226 -> 10.2.23.231
+IPVer=4 hlen=5 tos=0 dlen=1316 ID=0 flags=0 offset=0 ttl=0 chksum=35452
+Protocol: 6 sport=80 -> dport=49195
+
+Seq=0 Ack=0 Off=5 Res=0 Flags=******** Win=0 urp=18806 chksum=0
+------------------------------------------------------------------------
+Count:3 Event#3.86710 2019-02-23 19:27 UTC
+ET MALWARE Windows executable sent when remote host claims to send an image
+209.141.55.226 -> 10.2.23.231
+IPVer=4 hlen=5 tos=0 dlen=1316 ID=0 flags=0 offset=0 ttl=0 chksum=35452
+Protocol: 6 sport=80 -> dport=49195
+
+Seq=0 Ack=0 Off=5 Res=0 Flags=******** Win=0 urp=18806 chksum=0
+------------------------------------------------------------------------
+Count:34 Event#3.86750 2019-02-23 19:27 UTC
+ET CURRENT_EVENTS Likely Evil EXE download from dotted Quad by MSXMLHTTP M2
+209.141.55.226 -> 10.2.23.231
+IPVer=4 hlen=5 tos=0 dlen=1267 ID=0 flags=0 offset=0 ttl=0 chksum=35501
+Protocol: 6 sport=80 -> dport=49195
+
+Seq=0 Ack=0 Off=5 Res=0 Flags=******** Win=0 urp=62010 chksum=0
+------------------------------------------------------------------------
+Count:34 Event#3.86784 2019-02-23 19:27 UTC
+ET CURRENT_EVENTS Likely Evil EXE download from MSXMLHTTP non-exe extension M2
+209.141.55.226 -> 10.2.23.231
+IPVer=4 hlen=5 tos=0 dlen=1267 ID=0 flags=0 offset=0 ttl=0 chksum=35501
+Protocol: 6 sport=80 -> dport=49195
+
+Seq=0 Ack=0 Off=5 Res=0 Flags=******** Win=0 urp=62010 chksum=0
+------------------------------------------------------------------------
+Count:34 Event#3.86818 2019-02-23 19:27 UTC
+ET TROJAN JS/WSF Downloader Dec 08 2016 M4
+209.141.55.226 -> 10.2.23.231
+IPVer=4 hlen=5 tos=0 dlen=1267 ID=0 flags=0 offset=0 ttl=0 chksum=35501
+Protocol: 6 sport=80 -> dport=49195
+
+Seq=0 Ack=0 Off=5 Res=0 Flags=******** Win=0 urp=62010 chksum=0
+------------------------------------------------------------------------
+Count:34 Event#3.86852 2019-02-23 19:27 UTC
+ETPRO CURRENT_EVENTS fake .jpg encrypted binary download by VBA macro
+209.141.55.226 -> 10.2.23.231
+IPVer=4 hlen=5 tos=0 dlen=1267 ID=0 flags=0 offset=0 ttl=0 chksum=35501
+Protocol: 6 sport=80 -> dport=49195
+
+Seq=0 Ack=0 Off=5 Res=0 Flags=******** Win=0 urp=62010 chksum=0
+------------------------------------------------------------------------
+Count:34 Event#3.86920 2019-02-23 19:27 UTC
+ET MALWARE Windows executable sent when remote host claims to send an image M2
+209.141.55.226 -> 10.2.23.231
+IPVer=4 hlen=5 tos=0 dlen=1267 ID=0 flags=0 offset=0 ttl=0 chksum=35501
+Protocol: 6 sport=80 -> dport=49195
+
+Seq=0 Ack=0 Off=5 Res=0 Flags=******** Win=0 urp=62010 chksum=0
+------------------------------------------------------------------------
+Count:4 Event#3.87206 2019-02-23 19:27 UTC
+ET TROJAN VMProtect Packed Binary Inbound via HTTP - Likely Hostile
+46.249.62.199 -> 10.2.23.231
+IPVer=4 hlen=5 tos=0 dlen=1316 ID=0 flags=0 offset=0 ttl=0 chksum=9772
+Protocol: 6 sport=80 -> dport=49199
+
+Seq=0 Ack=0 Off=5 Res=0 Flags=******** Win=0 urp=58148 chksum=0
+------------------------------------------------------------------------
+Count:1 Event#3.87211 2019-02-23 19:34 UTC
+ET TROJAN IcedID WebSocket Request
+10.2.23.231 -> 87.236.22.142
+IPVer=4 hlen=5 tos=0 dlen=145 ID=0 flags=0 offset=0 ttl=0 chksum=10757
+Protocol: 6 sport=49209 -> dport=80
+
+Seq=0 Ack=0 Off=5 Res=0 Flags=******** Win=0 urp=23145 chksum=0
+------------------------------------------------------------------------
+Count:1 Event#3.87220 2019-02-23 19:38 UTC
+ET EXPLOIT Possible ETERNALBLUE Probe MS17-010 (Generic Flags)
+10.2.23.231 -> 10.2.23.2
+IPVer=4 hlen=5 tos=0 dlen=118 ID=1974 flags=2 offset=0 ttl=128 chksum=46687
+Protocol: 6 sport=49218 -> dport=445
+
+Seq=1379835721 Ack=2808443629 Off=5 Res=0 Flags=***AP*** Win=255 urp=21298 chksum=0
+------------------------------------------------------------------------
+Count:1 Event#3.87221 2019-02-23 19:38 UTC
+ET EXPLOIT ETERNALBLUE Probe Vulnerable System Response MS17-010
+10.2.23.2 -> 10.2.23.231
+IPVer=4 hlen=5 tos=0 dlen=79 ID=2826 flags=2 offset=0 ttl=128 chksum=45874
+Protocol: 6 sport=445 -> dport=49218
+
+Seq=2808443629 Ack=1379835799 Off=5 Res=0 Flags=***AP*** Win=255 urp=40535 chksum=0
+------------------------------------------------------------------------
+Count:10 Event#3.87222 2019-02-23 19:38 UTC
+ET MALWARE Windows executable sent when remote host claims to send an image
+85.143.218.7 -> 10.2.23.231
+IPVer=4 hlen=5 tos=0 dlen=1316 ID=0 flags=0 offset=0 ttl=0 chksum=25685
+Protocol: 6 sport=80 -> dport=49262
+
+Seq=0 Ack=0 Off=5 Res=0 Flags=******** Win=0 urp=51179 chksum=0
+------------------------------------------------------------------------
+Count:10 Event#3.87228 2019-02-23 19:38 UTC
+ET MALWARE Windows executable sent when remote host claims to send an image M3
+85.143.218.7 -> 10.2.23.231
+IPVer=4 hlen=5 tos=0 dlen=1316 ID=0 flags=0 offset=0 ttl=0 chksum=25685
+Protocol: 6 sport=80 -> dport=49262
+
+Seq=0 Ack=0 Off=5 Res=0 Flags=******** Win=0 urp=51179 chksum=0
+------------------------------------------------------------------------
+Count:98 Event#3.87231 2019-02-23 19:38 UTC
+ET TROJAN VMProtect Packed Binary Inbound via HTTP - Likely Hostile
+85.143.218.7 -> 10.2.23.231
+IPVer=4 hlen=5 tos=0 dlen=1316 ID=0 flags=0 offset=0 ttl=0 chksum=25685
+Protocol: 6 sport=80 -> dport=49262
+
+Seq=0 Ack=0 Off=5 Res=0 Flags=******** Win=0 urp=51179 chksum=0
+------------------------------------------------------------------------
+Count:2 Event#3.87370 2019-02-23 19:39 UTC
+ETPRO TROJAN Trickbot Requesting networkDll Module
+10.2.23.231 -> 85.143.218.7
+IPVer=4 hlen=5 tos=0 dlen=184 ID=0 flags=0 offset=0 ttl=0 chksum=26817
+Protocol: 6 sport=49273 -> dport=80
+
+Seq=0 Ack=0 Off=5 Res=0 Flags=******** Win=0 urp=39948 chksum=0
+------------------------------------------------------------------------
+Count:13 Event#3.87562 2019-02-23 19:41 UTC
+ET TROJAN ABUSE.CH SSL Blacklist Malicious SSL certificate detected (Dridex/Trickbot CnC)
+213.226.68.112 -> 10.2.23.231
+IPVer=4 hlen=5 tos=0 dlen=1316 ID=0 flags=0 offset=0 ttl=0 chksum=31129
+Protocol: 6 sport=443 -> dport=49550
+
+Seq=0 Ack=0 Off=5 Res=0 Flags=******** Win=0 urp=53063 chksum=0
+------------------------------------------------------------------------
+Count:4 Event#3.87581 2019-02-23 19:42 UTC
+ET TROJAN ABUSE.CH SSL Blacklist Malicious SSL certificate detected (Dridex/Trickbot CnC)
+195.123.246.99 -> 10.2.23.231
+IPVer=4 hlen=5 tos=0 dlen=1316 ID=0 flags=0 offset=0 ttl=0 chksum=55820
+Protocol: 6 sport=447 -> dport=49556
+
+Seq=0 Ack=0 Off=5 Res=0 Flags=******** Win=0 urp=64835 chksum=0
+------------------------------------------------------------------------
+Count:4 Event#3.87724 2019-02-23 19:49 UTC
+ETPRO TROJAN Trickbot Checkin Response
+190.146.112.216 -> 10.2.23.231
+IPVer=4 hlen=5 tos=0 dlen=179 ID=0 flags=0 offset=0 ttl=0 chksum=26866
+Protocol: 6 sport=8082 -> dport=49565
+
+Seq=0 Ack=0 Off=5 Res=0 Flags=******** Win=0 urp=9055 chksum=0
+------------------------------------------------------------------------
+Count:2 Event#3.87727 2019-02-23 19:49 UTC
+ET TROJAN [PTsecurity] Trickbot Data Exfiltration
+10.2.23.231 -> 190.146.112.216
+IPVer=4 hlen=5 tos=0 dlen=469 ID=0 flags=0 offset=0 ttl=0 chksum=26576
+Protocol: 6 sport=49566 -> dport=8082
+
+Seq=0 Ack=0 Off=5 Res=0 Flags=******** Win=0 urp=59317 chksum=0
+------------------------------------------------------------------------
+Count:8 Event#3.87744 2019-02-23 19:50 UTC
+ETPRO TROJAN W32/Trickbot C2 (networkDll module)
+10.2.23.231 -> 190.146.112.216
+IPVer=4 hlen=5 tos=0 dlen=273 ID=0 flags=0 offset=0 ttl=0 chksum=26772
+Protocol: 6 sport=49570 -> dport=8082
+
+Seq=0 Ack=0 Off=5 Res=0 Flags=******** Win=0 urp=39941 chksum=0
+
