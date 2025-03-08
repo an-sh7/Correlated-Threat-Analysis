@@ -96,7 +96,3 @@ Malicious External IPs: ['203.0.113.5', '198.51.100.10']
 *   **Interactive Mode:**  Consider adding an interactive mode (perhaps using a simple text-based interface) to allow users to explore the data more thoroughly.
 *   **Unit Tests:**  Add unit tests to ensure the script works correctly and to prevent regressions.
 *   **Error Handling:**  Improve error handling to provide more informative messages to the user.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. <!--- Create the LICENSE file -->
