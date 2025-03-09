@@ -1,98 +1,129 @@
-# Correlated Threat Analysis Script
+# Correlated Threat Analysis Tool (GUI Version)
 
-This Python script automates the initial steps of a network forensics investigation by correlating IDS alerts with PCAP data.  It quickly identifies the likely infected host and extracts key information (MAC, hostname, user, potential malware URLs/hashes) to facilitate further analysis.
+This Python application provides a graphical user interface (GUI) for performing correlated threat analysis using PCAP files and optional IDS/NDR alert logs. It helps security analysts quickly identify potentially compromised hosts and gather initial indicators of compromise (IOCs). This is an enhanced version of a command-line script, now with a user-friendly interface.
 
 ## Description
 
-This script is designed to help security analysts and incident responders quickly triage potential security incidents. It takes two inputs:
+The tool combines network traffic analysis (from PCAP files) with alert data (from systems like Suricata, Snort, or Zeek) to provide a more comprehensive view of potential security incidents. It automates several key steps in the initial stages of an investigation, including:
 
-1.  **A PCAP file:**  A network traffic capture (e.g., created by Wireshark, tcpdump, or other network monitoring tools).
-2.  **An alerts file:**  A text file containing alerts from an Intrusion Detection System (IDS) or Network Detection and Response (NDR) system (e.g., Suricata, Snort, Zeek).  The script expects a common alert format that includes IP addresses.
-
-The script performs the following actions:
-
-1.  **Parses the Alerts File:**
-    *   Identifies and counts the occurrences of IP addresses (both source and destination).
-    *   Extracts potential malicious/external IP addresses (typically the source IPs in the alerts).
-    *   Identifies URLs potentially related to the download of Windows executables.
-    *   Determines the most likely infected internal host (prioritizing private IP addresses with the highest alert counts).
-
-2.  **Analyzes the PCAP File:**
-    *   Filters the PCAP data to focus on traffic related to the suspected infected host.
-    *   Extracts the MAC address of the infected host.
-    *   Attempts to extract the hostname from DNS, NBNS, or DHCP packets.
-    *   Attempts to extract the Windows user account from SMB/SMB2 packets.
-    *   Collects URLs that may be associated with malware downloads (from HTTP traffic).
-    *   Calculates SHA256 hashes of potential malware payloads from TCP data streams.
-
-3.  **Presents the Findings:**  Prints a summary of the analysis, including the identified infected host, its MAC address, hostname (if found), user account (if found), potential malicious URLs, and file hashes.
+- **Identifying the most likely infected host:** Based on IP address frequency and whether the IP is private or public.
+- **Extracting key information about the infected host:** MAC address, hostname (if available via DNS, NBNS, or DHCP), and Windows user account (if available via SMB/SMB2).
+- **Detecting potential malware downloads:** Identifying URLs that may have delivered malicious executables and calculating SHA256 hashes of suspicious network payloads.
+- **Listing potentially malicious external IP addresses:** Based on the source IPs found in the alert logs.
 
 ## Features
 
-*   **Infected Host Identification:**  Quickly pinpoints the most likely compromised host based on alert frequency and IP address type (private vs. public).
-*   **MAC Address Extraction:** Retrieves the MAC address of the infected host for network segmentation or device identification.
-*   **Hostname and User Account Discovery:**  Attempts to identify the hostname and Windows user account associated with the infected host, providing valuable context.
-*   **Malicious URL and Hash Detection:**  Identifies potential malware download URLs and calculates SHA256 hashes of suspicious payloads.
-*   **External IP Identification:** Creates a list of suspected external attacker IPs.
-*   **Easy to Use:**  Simple command-line execution with clear output.
+- **Graphical User Interface (GUI):** Easy-to-use interface built with Tkinter.
+- **PCAP File Analysis:** Processes network traffic captures using the powerful `pyshark` library.
+- **Optional Alert Log Integration:** Supports correlation with alert files from various IDS/NDR systems (text-based formats).
+- **Infected Host Identification:** Prioritizes private IP addresses with the highest alert counts to pinpoint compromised systems.
+- **MAC Address, Hostname, and User Account Extraction:** Gathers crucial context about the infected host (when available in the network traffic).
+- **Malicious URL and Hash Detection:** Flags potential malware download URLs and calculates SHA256 hashes.
+- **External IP Identification:** Compiles a list of potentially malicious external IP addresses.
+- **Multi-threaded Analysis:** Runs the analysis in a separate thread to prevent the GUI from freezing.
+- **Error Handling:** Includes robust error handling to gracefully manage issues with file parsing, network traffic, and user input. Error messages are displayed in the GUI.
+- **Logging:** Logs debug information to the console.
 
 ## Dependencies
 
-*   `pyshark`: A Python wrapper for TShark (the command-line version of Wireshark). Install using pip:
-    ```bash
-    pip install pyshark
-    ```
-* `ipaddress`: comes with python.
-* **TShark:**  `pyshark` relies on TShark being installed on your system.  On most Linux distributions, you can install it with your package manager (e.g., `apt install tshark` on Debian/Ubuntu).  On Windows, you typically install Wireshark, which includes TShark. Make sure TShark is in your system's PATH.
+- **Python 3.6+:** This script is written in Python 3.
+- **pyshark:** A Python wrapper for TShark.
+  
+  ```bash
+  pip install pyshark
+  ```
+  
+- **TShark:** `pyshark` depends on TShark. You likely have this if you have Wireshark installed. Ensure TShark is in your system's PATH. On Linux, you can often install it via your package manager (e.g., `apt install tshark` on Debian/Ubuntu).
+- **ipaddress:** Comes with Python.
 
-## Usage
+## Installation
 
-1.  **Clone this repository (or copy the script):**
+1. **Clone the repository (or download the script):**
 
     ```bash
     git clone <your_repository_url>
     cd <your_repository_directory>
     ```
 
-2.  **Run the script:**
+2. **Install the `pyshark` library:**
 
     ```bash
-    python correlated_analysis.py  # Replace with the actual script name
+    pip install pyshark
     ```
 
-    *   **Important:** The script assumes the PCAP file (`2019-02-23-traffic-analysis-exercise.pcap`) and the alerts file (`2019-02-23-traffic-analysis-exercise-alerts.txt`) are in the *same directory* as the script.  You may need to modify the `pcap_file` and `alerts_file` variables at the beginning of the script if your files are located elsewhere.  Ideally, you would add command-line argument parsing to make this more flexible.
+3. **Ensure TShark is installed and in your PATH:** See the "Dependencies" section above.
 
-3.  **Review the Output:** The script will print its findings to the console.
+## Usage
 
-## Example
+1. **Run the script:**
 
-Assuming you have a PCAP file named `example.pcap` and an alerts file named `alerts.txt` in the same directory as the script, the output might look like this:
+    ```bash
+    python correlated_analysis_gui.py  # Replace with the actual script name
+    ```
+
+2. **Select Files:**
+    - Click the "Browse" button next to "PCAP File:" to choose your PCAP file (`.pcap` or `.pcapng`).
+    - (Optional) Click the "Browse" button next to "Alerts File (Optional):" to select a text-based alert log file (`.txt` or `.log`).
+
+3. **Run the Analysis:**
+    - Click the "Run Analysis" button. The analysis will run in the background, and a progress indicator will be displayed. The GUI will remain responsive.
+
+4. **View Results:**
+    - The results will be displayed in the "Analysis Results" text area. This includes:
+      - Infected Windows Host IP
+      - Infected Windows Host MAC
+      - Host Name (if found)
+      - Windows User Account Name (if found)
+      - Malicious URLs serving executables (up to 6)
+      - SHA256 hashes of the executables (up to 6)
+      - Malicious External IPs
+
+5. **Error Handling:**
+    - If errors occur, the program will not crash but will instead log them and attempt to inform the user.
+
+## Example Output
+
+🚨 **Correlated Threat Analysis** 🚨
+
 ```
-🚨 Correlated Threat Analysis 🚨
-
 Infected Windows Host IP: 192.168.1.105
 Infected Windows Host MAC: 00:11:22:33:44:55
-Host Name: DESKTOP-XYZ123
+Host Name: DESKTOP-WORKSTATION
 Windows User Account Name: john.doe
-Malicious URLs serving executables: ['http://malicious.example.com/payload.exe', 'http://anotherbadsite.com/malware.zip']
-SHA256 hashes of the executables: ['a1b2c3d4e5f6...', 'f1e2d3c4b5a6...']
-Malicious External IPs: ['203.0.113.5', '198.51.100.10']
+Malicious URLs serving executables: http://example.com/malware.exe, http://badsite.com/payload.zip
+SHA256 hashes of the executables: a1b2c3d4..., f1e2d3c4...
+Malicious External IPs: 203.0.113.5, 198.51.100.10
 ```
 
 ## Limitations
 
-*   This script provides a *basic* level of correlation.  It does not perform deep packet inspection, behavioral analysis, or threat intelligence lookups (beyond identifying potentially malicious IPs).
-*   The accuracy of hostname and user account extraction depends on the presence and format of the relevant network traffic.
-*   The script is designed for a specific alert file format. You may need to modify the regular expressions in the `parse_alerts` function if your alert file has a different structure.
-*   Error handling is minimal.
+- The accuracy of hostname and user account identification depends on the presence and format of the relevant network traffic (DNS, NBNS, DHCP, SMB).
+- The alert file parsing is designed for common text-based formats. You may need to adjust the regular expressions if your alert file has a significantly different structure.
+- The tool does not currently include advanced features like threat intelligence lookups (e.g., VirusTotal integration).
 
-## Improvements/TODO
+## Future Improvements
 
-*   **Command-line Arguments:** Add command-line arguments to specify the PCAP and alerts file paths, making the script more flexible.
-*   **Configuration File:** Allow users to configure settings (e.g., alert file format, output format) via a configuration file.
-*   **Output Options:**  Provide options to output the results in different formats (e.g., JSON, CSV).
-*   **IP Reputation Lookup:** Integrate with services like VirusTotal or AbuseIPDB to check the reputation of identified IP addresses.
-*   **More Robust Alert Parsing:**  Handle a wider variety of alert formats.
-*   **Interactive Mode:**  Consider adding an interactive mode (perhaps using a simple text-based interface) to allow users to explore the data more thoroughly.
-*   **Unit Tests:**  Add unit tests to ensure the script works correctly and to prevent regressions.
-*   **Error Handling:**  Improve error handling to provide more informative messages to the user.
+- **IP Reputation Lookup:** Integrate with services like VirusTotal or AbuseIPDB to provide reputation scores for identified IP addresses.
+- **Export Results:** Add options to export the analysis results to different file formats (e.g., CSV, JSON).
+- **Configurable Alert Parsing:** Allow users to define custom regular expressions or parsing rules for different alert file formats.
+- **More Detailed Packet Information:** Provide an option to display more detailed information about specific packets related to the incident.
+- **Interactive Exploration:** Potentially add features for interactive exploration of the network traffic data.
+
+---
+
+Key improvements and explanations for a good README:
+
+- **Clear Title and Description:** States what the tool does and who it's for.
+- **Features Section:** Highlights the key capabilities using bullet points.
+- **Dependencies:** Lists *all* required libraries and explains how to install them (including TShark, which is crucial for `pyshark`).
+- **Installation:** Provides clear, step-by-step instructions.
+- **Usage:** Explains how to use the GUI, including file selection and running the analysis.
+- **Example Output:** Shows what the user can expect to see.
+- **Limitations:** Acknowledges the tool's limitations, managing expectations.
+- **Future Improvements:** Lists potential enhancements (good for open-source projects).
+- **Markdown Formatting:** Uses Markdown (`.md`) for headings, lists, code blocks, and links, making it readable on platforms like GitHub, GitLab, and Bitbucket.
+- **GUI Focus:** Explicitly mentions that this is a GUI version of a tool.
+- **Error Handling:** Includes a note on the included Error Handling.
+- **Complete Instructions:** The instructions are complete and self-contained. Someone should be able to clone the repository, install the dependencies, and run the tool successfully just by following the README.
+
+
